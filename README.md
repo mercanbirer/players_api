@@ -1,21 +1,28 @@
 # Flutter
 
 //bloc
+ 
  pubspec.yaml: 
+ 
  dependencies:
   flutter_bloc: ^8.0.0
 
 //get_it
+
 dependencies:
+
   get_it: ^7.2.0
   
 //image
+
  Image:
  pubspec.yaml: 
+ 
  assets:
   - assets/images/img.jpg
 
 //json
+
  JsonSerializable: 
  command : flutter pub add json_annotation dev:build_runner dev:json_serializable
 
