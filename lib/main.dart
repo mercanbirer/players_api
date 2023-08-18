@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:player/src/injector.dart';
 import 'package:player/src/presentation/bloc/player/player_bloc.dart';
 import 'package:player/src/presentation/bloc/player_detail/player_detail_bloc.dart';

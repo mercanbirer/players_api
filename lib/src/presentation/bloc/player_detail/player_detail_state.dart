@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import '../../../data/models/team.dart';
 
 abstract class PlayerDetailState extends Equatable {
