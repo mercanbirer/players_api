@@ -1,11 +1,26 @@
-# players_api
+# Flutter
 
-"A new Flutter project."
+//bloc
+ pubspec.yaml: 
+ dependencies:
+  flutter_bloc: ^8.0.0
 
-## Getting Started
+//get_it
+dependencies:
+  get_it: ^7.2.0
+  
+//image
+ Image:
+ pubspec.yaml: 
+ assets:
+  - assets/images/img.jpg
 
-This project is a starting point for a Flutter application.
+//json
+ JsonSerializable: 
+ command : flutter pub add json_annotation dev:build_runner dev:json_serializable
 
+
+ 
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
