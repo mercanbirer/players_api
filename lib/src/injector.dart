@@ -16,7 +16,7 @@ void setup() {
   //repository
   injector.registerLazySingleton<ApiRepository>(
         () => PlayerRepositoryImpl(
-      remoteDataSource: injector(),
+      apiClient: injector(),
     ),
   );
 
