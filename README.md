@@ -26,6 +26,15 @@ dependencies:
  JsonSerializable: 
  command : flutter pub add json_annotation dev:build_runner dev:json_serializable
 
+//RegisterSingleton:
+  We use this method to register a singleton instance get<T>())
+
+//RegisterLazySingleton:
+  get<T>() is called the first time
+
+//RegisterFactory:
+  We use this method to return a new instance of type T every time we call get<T>()
+
 
  
 A few resources to get you started if this is your first Flutter project:

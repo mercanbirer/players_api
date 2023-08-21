@@ -13,17 +13,17 @@ void setup() {
   //network
   injector.registerLazySingleton(() => ApiClient());
 
-  //bloc
-  injector.registerFactory(() => PlayerBloc(injector()));
-  injector.registerFactory(() => PlayerDetailBloc(injector()));
-
-  //useCase
-  injector.registerLazySingleton(() => PlayerUseCase(injector()));
-
   //repository
   injector.registerLazySingleton<ApiRepository>(
         () => PlayerRepositoryImpl(
       remoteDataSource: injector(),
     ),
   );
+
+  //useCase
+  injector.registerLazySingleton(() => PlayerUseCase(injector()));
+
+  //bloc
+  injector.registerFactory(() => PlayerBloc(injector()));
+  injector.registerFactory(() => PlayerDetailBloc(injector()));
 }

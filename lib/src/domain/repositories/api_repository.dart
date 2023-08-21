@@ -7,3 +7,5 @@ abstract class ApiRepository {
 
   Future<List<Team>> playerDetailList();
 }
+
+//interface, pattern ve unit testler için

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiBlocProvider( //dinleyen her yere bildirmek ve context'e inject etmek için
         providers: [
           BlocProvider(create: (_) => injector<PlayerBloc>()),
           BlocProvider(create: (_) => injector<PlayerDetailBloc>()),
