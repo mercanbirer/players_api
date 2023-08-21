@@ -1,19 +1,19 @@
 # Flutter
 
-//bloc
+### Bloc:
  
  pubspec.yaml: 
  
  dependencies:
   flutter_bloc: ^8.0.0
 
-//get_it
+### get_it:
 
 dependencies:
 
   get_it: ^7.2.0
-  
-//image
+
+### image:
 
  Image:
  pubspec.yaml: 
@@ -21,18 +21,19 @@ dependencies:
  assets:
   - assets/images/img.jpg
 
-//json
+### json:
 
- JsonSerializable: 
+
+### JsonSerializable: 
  command : flutter pub add json_annotation dev:build_runner dev:json_serializable
 
-//RegisterSingleton:
+### RegisterSingleton:
   We use this method to register a singleton instance get<T>())
 
-//RegisterLazySingleton:
+### RegisterLazySingleton:
   get<T>() is called the first time
 
-//RegisterFactory:
+### RegisterFactory:
   We use this method to return a new instance of type T every time we call get<T>()
 
 
