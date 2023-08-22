@@ -10,7 +10,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     on<PlayerEvent>((event, emit) async {
       emit(PlayerStateLoading());
 
-      final mList = await useCase.playerList();
+      final mList = await useCase.playerList(); //injector<PlayerUseCase>().playerList()
       emit(PlayerStateSuccess(mList));
     });
   }

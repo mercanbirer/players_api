@@ -10,8 +10,4 @@ class PlayerUseCase {
   Future<List<Player>> playerList() {
     return _repository.playerList();
   }
-
-  Future<List<Team>> playerDetailList() {
-    return _repository.playerDetailList();
-  }
 }

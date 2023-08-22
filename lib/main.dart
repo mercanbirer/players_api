@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/injector.dart';
 import 'package:player/src/presentation/bloc/player/player_bloc.dart';
-import 'package:player/src/presentation/bloc/player_detail/player_detail_bloc.dart';
 import 'package:player/src/presentation/view/player/player_screen.dart';
 
 void main() {
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider( //dinleyen her yere bildirmek ve context'e inject etmek için
         providers: [
           BlocProvider(create: (_) => injector<PlayerBloc>()),
-          BlocProvider(create: (_) => injector<PlayerDetailBloc>()),
         ],
       child: MaterialApp(
         title: 'Player',
