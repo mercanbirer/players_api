@@ -15,17 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( //dinleyen her yere bildirmek ve context'e inject etmek için
-        providers: [
-          BlocProvider(create: (_) => injector<PlayerBloc>()),
-        ],
-      child: MaterialApp(
-        title: 'Player',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const PlayerScreen(),
-      )
+    return MaterialApp(
+      title: 'Player',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: BlocProvider(
+          create: (context) => injector<PlayerBloc>(),
+          child: const PlayerScreen()),
     );
   }
 }

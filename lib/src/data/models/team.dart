@@ -1,12 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../domain/entities/team_entity.dart';
+
+part 'team.g.dart';
+
 @JsonSerializable()
 class Team {
   int? id;
   String? abbreviation;
+  @JsonKey(name: 'city')
   String? city;
   String? conference;
   String? division;
+  @JsonKey(name: 'fullName')
   String? fullName;
   String? name;
 
@@ -20,14 +26,21 @@ class Team {
     this.name,
   });
 
-  factory Team.fromJson(Map<String, dynamic> json) {
-    return Team(
-        id: json['id'],
-        abbreviation: json['abbreviation'],
-        city: json['city'],
-        conference: json['conference'],
-        division: json['division'],
-        fullName: json['full_name'],
-        name: json['name']);
+  factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TeamToJson(this);
+
+  TeamEntity toEntity() {
+    return TeamEntity(
+        id: id,
+        abbreviation: abbreviation,
+        city: city,
+        conference: conference,
+        division: division,
+        fullName: fullName,
+        name: name);
   }
+
+  @override
+  bool get operator => true;
 }

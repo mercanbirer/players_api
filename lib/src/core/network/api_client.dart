@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:player/src/injector.dart';
 import '../../data/models/player.dart';
+import '../../injector.dart';
 
 class ApiClient {
   final  _dio = injector<Dio>();

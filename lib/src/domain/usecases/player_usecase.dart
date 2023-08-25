@@ -1,6 +1,5 @@
-import 'package:player/src/domain/repositories/api_repository.dart';
 import '../../data/models/player.dart';
-import '../../data/models/team.dart';
+import '../repositories/api_repository.dart';
 
 class PlayerUseCase {
   final ApiRepository _repository;

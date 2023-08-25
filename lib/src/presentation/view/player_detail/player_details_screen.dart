@@ -1,10 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/presentation/bloc/player/player_event.dart';
-import 'package:player/src/presentation/bloc/player/player_state.dart';
 import '../../../data/models/player.dart';
 import '../../bloc/player/player_bloc.dart';
+import '../../bloc/player/player_state.dart';
 
 
 class PlayerDetailsScreen extends StatefulWidget {
@@ -16,12 +15,9 @@ class PlayerDetailsScreen extends StatefulWidget {
 }
 
 class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
-  late PlayerBloc _playerDetailBloC;
 
   @override
   void initState() {
-    _playerDetailBloC = BlocProvider.of<PlayerBloc>(context);
-    _playerDetailBloC.add(const OnPlayerEvent());
     super.initState();
   }
 
@@ -44,44 +40,35 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
   }
 
   Widget detailPage() {
-    return BlocProvider(
-      create: (_) => _playerDetailBloC,
-      child: BlocListener<PlayerBloc, PlayerState>(
-        listener: (context, state) {
-          if (state is PlayerStateFail) {
+    return Center(
+      child: BlocBuilder<PlayerBloc, PlayerState>(
+        builder: (context, state) {
+          if (state is PlayerStateLoading) {
+            return const CircularProgressIndicator();
+          } else if (state is PlayerStateSuccess) {
+            return Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset('assets/images/image.png'),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(widget.player.id.toString())
+              ],
+            );
+          } else if (state is PlayerStateFail) {
             log("Error -> ${state.message}");
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.message)));
+          } else if (state is PlayerStateInitial) {
+            return const Text('Initial');
           }
+          return Container();
         },
-        child: BlocBuilder<PlayerBloc, PlayerState>(
-          builder: (context, state) {
-            if (state is PlayerStateInitial) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is PlayerStateLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is PlayerStateSuccess) {
-              return Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 200,
-                    width: 200,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset('assets/images/image.png'),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(widget.player.id.toString())
-                ],
-              );
-            } else if (state is PlayerStateFail) {
-              return Container();
-            } else {
-              return Container();
-            }
-          },
-        ),
       ),
     );
   }

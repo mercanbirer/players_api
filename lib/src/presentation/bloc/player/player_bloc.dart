@@ -1,17 +1,27 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:player/src/domain/usecases/player_usecase.dart';
-import 'package:player/src/presentation/bloc/player/player_event.dart';
 import 'package:player/src/presentation/bloc/player/player_state.dart';
+import '../../../domain/usecases/player_usecase.dart';
 
-class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
+class PlayerBloc extends Cubit<PlayerState> {
+  PlayerBloc(this.useCase) : super(PlayerStateInitial()) {
+    getPlayers();
+  }
+
   final PlayerUseCase useCase;
 
-  PlayerBloc(this.useCase) : super(PlayerStateInitial()) {
-    on<PlayerEvent>((event, emit) async {
+  Future<void> getPlayers() async {
+    try {
       emit(PlayerStateLoading());
+      final players = await useCase.playerList();
 
-      final mList = await useCase.playerList(); //injector<PlayerUseCase>().playerList()
-      emit(PlayerStateSuccess(mList));
-    });
+      emit(PlayerStateSuccess(players));
+    } catch (e) {
+      emit(const PlayerStateFail('Error'));
+    }
   }
 }
+
+
+
+
+

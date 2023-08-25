@@ -1,50 +1,54 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:player/src/data/models/team.dart';
+import '../../domain/entities/player_entity.dart';
+import 'team.dart';
+part 'player.g.dart';
 
 @JsonSerializable()
 class Player {
+  @JsonKey(name: 'id')
   int? id;
+  @JsonKey(name: 'firstName')
   String? firstName;
-  int? heightFeet;
-  int? heightInches;
+  @JsonKey(name: 'heightFeet')
+  dynamic heightFeet;
+  @JsonKey(name: 'heightInches')
+  dynamic heightInches;
+  @JsonKey(name: 'lastName')
   String? lastName;
+  @JsonKey(name: 'position')
   String? position;
+  @JsonKey(name: 'weightPounds')
+  dynamic weightPounds;
+  @JsonKey(name: 'team')
   Team? team;
 
-  Player(
-      {this.id,
-      this.firstName,
-      this.heightFeet,
-      this.heightInches,
-      this.lastName,
-      this.position,
-      this.team});
+  Player({
+    this.id,
+    this.firstName,
+    this.heightFeet,
+    this.heightInches,
+    this.lastName,
+    this.position,
+    this.team,
+    this.weightPounds,
+  });
 
-  factory Player.fromJson(Map<String, dynamic> json) {
-    return _$PlayerFromJson(json);
+  factory Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PlayerToJson(this);
+
+  PlayerEntity toEntity() {
+    return PlayerEntity(
+        id: id,
+        firstName: firstName,
+        heightFeet: heightFeet,
+        heightInches: heightInches,
+        lastName: lastName,
+        position: position,
+        team: team?.toEntity(),
+        weightPounds: weightPounds);
   }
 
-  Map<String, dynamic> toJson() => _$PlayerFromToJson(this);
-
-  Map<String, dynamic> _$PlayerFromToJson(Player instance) => <String, dynamic>{
-        'id': instance.id,
-        'firstName': instance.firstName,
-        'heightFeet': instance.heightFeet,
-        'heightInches': instance.heightInches,
-        'lastName': instance.lastName,
-        'position': instance.position,
-        'team': instance.team,
-      };
+  @override
+  bool get operator => true;
 }
-
-Player _$PlayerFromJson(Map<String, dynamic> json) => Player(
-      id: json["id"] != null ? json["id"] as int : null,
-      firstName: json["first_name"] as String?,
-      heightFeet:
-          json["height_feet"] != null ? json["height_feet"] as int : null,
-      heightInches:
-          json["height_inches"] != null ? json["height_inches"] as int : null,
-      lastName: json["last_name"] as String?,
-      position: json["position"] as String?,
-      team: json["team"] != null ? Team.fromJson(json["team"]) : null,
-    );

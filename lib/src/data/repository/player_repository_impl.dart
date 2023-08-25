@@ -1,5 +1,5 @@
-import 'package:player/src/core/network/api_client.dart';
-import 'package:player/src/domain/repositories/api_repository.dart';
+import '../../core/network/api_client.dart';
+import '../../domain/repositories/api_repository.dart';
 import '../models/player.dart';
 
 class PlayerRepositoryImpl implements ApiRepository {
