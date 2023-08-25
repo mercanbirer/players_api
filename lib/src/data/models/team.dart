@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
 import '../../domain/entities/team_entity.dart';
-
 part 'team.g.dart';
 
 @JsonSerializable()
@@ -40,7 +38,4 @@ class Team {
         fullName: fullName,
         name: name);
   }
-
-  @override
-  bool get operator => true;
 }

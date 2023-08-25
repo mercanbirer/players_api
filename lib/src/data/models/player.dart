@@ -48,7 +48,4 @@ class Player {
         team: team?.toEntity(),
         weightPounds: weightPounds);
   }
-
-  @override
-  bool get operator => true;
 }
