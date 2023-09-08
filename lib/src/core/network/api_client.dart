@@ -3,7 +3,7 @@ import '../../data/models/player.dart';
 import '../../injector.dart';
 
 class ApiClient {
-  final  _dio = injector<Dio>();
+  final  _dio = Dio();
   final String _url = 'https://www.balldontlie.io/api/v1';
 
   Future<List<Player>> playerList() async {
