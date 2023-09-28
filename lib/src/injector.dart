@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:player/src/presentation/bloc/player/player_bloc.dart';
+import 'package:player/src/presentation/bloc/player_detail/player_detail_bloc.dart';
 import 'core/network/api_client.dart';
 import 'data/repository/player_repository_impl.dart';
 import 'domain/repositories/api_repository.dart';
@@ -27,4 +28,5 @@ void setup() {
 
   //bloc
   injector.registerFactory(() => PlayerBloc(injector()));
+  injector.registerFactory(() => PlayerDetailsBloc(injector()));
 }

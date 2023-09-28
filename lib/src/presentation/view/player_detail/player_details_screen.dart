@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:player/src/presentation/bloc/player_detail/player_detail_bloc.dart';
+import 'package:player/src/presentation/bloc/player_detail/player_detail_state.dart';
 import '../../../data/models/player.dart';
-import '../../bloc/player/player_bloc.dart';
 import '../../bloc/player/player_state.dart';
-
 
 class PlayerDetailsScreen extends StatefulWidget {
   const PlayerDetailsScreen({Key? key, required this.player}) : super(key: key);
@@ -15,7 +15,6 @@ class PlayerDetailsScreen extends StatefulWidget {
 }
 
 class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -41,11 +40,11 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
 
   Widget detailPage() {
     return Center(
-      child: BlocBuilder<PlayerBloc, PlayerState>(
+      child: BlocBuilder<PlayerDetailsBloc, PlayerDetailState>(
         builder: (context, state) {
-          if (state is PlayerStateLoading) {
+          if (state is PlayerDetailStateLoading) {
             return const CircularProgressIndicator();
-          } else if (state is PlayerStateSuccess) {
+          } else if (state is PlayerDetailStateSuccess) {
             return Column(
               children: <Widget>[
                 SizedBox(
@@ -57,10 +56,12 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(widget.player.id.toString())
+                Text(
+                    'Full Name: ${widget.player.firstName} ${widget.player.firstName} '
+                    '')
               ],
             );
-          } else if (state is PlayerStateFail) {
+          } else if (state is PlayerDetailStateFail) {
             log("Error -> ${state.message}");
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.message)));
@@ -73,4 +74,3 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
     );
   }
 }
-

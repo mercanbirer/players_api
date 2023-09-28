@@ -48,7 +48,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
   }
 
   Widget _listPlayer() {
-   return Center(
+    return Center(
       child: BlocBuilder<PlayerBloc, PlayerState>(
         builder: (context, state) {
           if (state is PlayerStateLoading) {
@@ -99,8 +99,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   ),
                   _notFound
                       ? const Center(
-                    child: Text("Aramanıza uygun sonuç bulunamadı."),
-                  )
+                          child: Text("Aramanıza uygun sonuç bulunamadı."),
+                        )
                       : SizedBox(
                     height: MediaQuery.of(context).size.height * .8,
                     child: ListView.builder(
