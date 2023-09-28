@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../data/models/player.dart';
 import '../../bloc/player/player_bloc.dart';
 import '../../bloc/player/player_state.dart';
-import '../player_detail/player_details_screen.dart';
 
 class PlayerScreen extends StatefulWidget {
   const PlayerScreen({Key? key}) : super(key: key);
@@ -102,54 +102,47 @@ class _PlayerScreenState extends State<PlayerScreen> {
                           child: Text("Aramanıza uygun sonuç bulunamadı."),
                         )
                       : SizedBox(
-                    height: MediaQuery.of(context).size.height * .8,
-                    child: ListView.builder(
-                      itemCount: _resultPlayerList.length,
-                      itemBuilder: (context, index) {
-                        final resultPlayer = _resultPlayerList[index];
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: ListTile(
-                            leading: const Icon(Icons.person),
-                            title: Row(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Text(resultPlayer.firstName!,
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16.0),
-                                      textAlign: TextAlign.center),
+                          height: MediaQuery.of(context).size.height * .8,
+                          child: ListView.builder(
+                            itemCount: _resultPlayerList.length,
+                            itemBuilder: (context, index) {
+                              final resultPlayer = _resultPlayerList[index];
+                              return Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Text(resultPlayer.lastName!,
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16.0),
-                                      textAlign: TextAlign.center),
-                                )
-                              ],
-                            ),
-                            trailing:
-                            const Icon(Icons.keyboard_arrow_right),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      PlayerDetailsScreen(
-                                          player: resultPlayer),
+                                child: ListTile(
+                                  leading: const Icon(Icons.person),
+                                  title: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Text(resultPlayer.firstName!,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16.0),
+                                            textAlign: TextAlign.center),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Text(resultPlayer.lastName!,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16.0),
+                                            textAlign: TextAlign.center),
+                                      )
+                                    ],
+                                  ),
+                                  trailing:
+                                      const Icon(Icons.keyboard_arrow_right),
+                                  onTap: () {
+                                    context.go('/playerDetailScreen');
+                                  },
                                 ),
                               );
                             },
                           ),
-                        );
-                      },
-                    ),
-                  ),
+                        ),
                 ],
               ),
             );
