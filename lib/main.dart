@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/injector.dart';
-import 'package:player/src/presentation/bloc/player/player_bloc.dart';
-import 'package:player/src/presentation/view/player/player_screen.dart';
+import 'package:player/src/router/app_routes.dart';
 
 void main() {
   setup();
@@ -15,14 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Player',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider(
-          create: (context) => injector<PlayerBloc>(),
-          child: const PlayerScreen()),
     );
   }
 }
