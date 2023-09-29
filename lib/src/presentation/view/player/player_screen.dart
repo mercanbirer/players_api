@@ -136,7 +136,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                                   trailing:
                                       const Icon(Icons.keyboard_arrow_right),
                                   onTap: () {
-                                    context.go('/playerDetailScreen');
+                                    context.go("/playerDetailScreen",extra:resultPlayer);
                                   },
                                 ),
                               );

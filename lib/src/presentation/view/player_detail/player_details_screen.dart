@@ -58,8 +58,7 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(widget.player.firstName ?? '')
-              //  'Full Name: ${widget.player.firstName} ${widget.player.firstName} ?? ''',
+                Text('Full Name: ${widget.player.firstName} ${widget.player.lastName}'),
               ],
             );
           } else if (state is PlayerDetailStateFail) {
