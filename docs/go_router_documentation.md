@@ -66,9 +66,9 @@ go_router, Flutter uygulamalarında gezinme (routing) işlemlerini kolayca yöne
      )
    ```
 
-   Ayrıca sayfa String bir parametre içerseydi  ```state.pathParameters["name"]``` şeklinde kullanılabilir.
-   İnt ise  ```id: int.parse(state.pathParameters['id']!``` şeklinde kullanılabilir. Bu işlemleri yaptıktan sonra yönlendirdiğimiz yerde parametreyi 
-   'extra' diyerek vermemiz gerekir aşağıdaki örnek gibi,
+   Ayrıca sayfa, veri tipi String olan bir parametre içerirse  ```state.pathParameters["name"]``` şeklinde kullanılır.
+   İnteger bir parametre içerirse  ```id: int.parse(state.pathParameters['id']!``` şeklinde kullanılır. Bu işlemleri yaptıktan sonra
+   yönlendirdiğimiz yerde  parametreyi **extra**  diyerek vermemiz gerekir aşağıdaki örnek gibi,
    ```
     context.go("/playerDetailScreen",extra:resultPlayer); 
    ``` 
