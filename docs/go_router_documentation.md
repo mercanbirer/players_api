@@ -50,9 +50,9 @@ go_router, Flutter uygulamalarında gezinme (routing) işlemlerini kolayca yöne
 
 -  Path, sayfanın URL'sindeki yolunu name ise sayfaları tanımlayan bir isim veya etiket diyebiliriz bu özellikleri sayfaları çağırırken veya gezinirken kulanırız örneğin PlayerScreen sayfasında kullandığımız yönlendirme gibi,
 
-  ```
-  context.go("/playerDetailScreen",extra:resultPlayer);
    ```
+   context.go("/playerDetailScreen",extra:resultPlayer);
+    ```
 - Projede PlayerDetailScreen sayfası Player modeli olan parametre içerdiği için GoRouter yapılandırmasının yapıldığı yerde sayfa rotasına eklenen verileri almak için nesnesi 'Player' olan state.extra kullanırız.Bu yöntem, sayfalar arasında veri iletişimi yapmak ve belirli sayfaları dinamik verilerle oluşturmak için kullanışlıdır.
 
    ```
