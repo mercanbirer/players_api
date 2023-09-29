@@ -6,6 +6,7 @@ import 'package:player/src/presentation/bloc/player_detail/player_detail_state.d
 import '../../../data/models/player.dart';
 import '../../bloc/player/player_state.dart';
 
+
 class PlayerDetailsScreen extends StatefulWidget {
   const PlayerDetailsScreen({Key? key, required this.player}) : super(key: key);
   final Player player;
@@ -15,6 +16,7 @@ class PlayerDetailsScreen extends StatefulWidget {
 }
 
 class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
+
   @override
   void initState() {
     super.initState();
@@ -56,9 +58,8 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(
-                    'Full Name: ${widget.player.firstName} ${widget.player.firstName} '
-                    '')
+                Text(widget.player.firstName ?? '')
+              //  'Full Name: ${widget.player.firstName} ${widget.player.firstName} ?? ''',
               ],
             );
           } else if (state is PlayerDetailStateFail) {
@@ -74,3 +75,4 @@ class _PlayerDetailsScreenState extends State<PlayerDetailsScreen> {
     );
   }
 }
+

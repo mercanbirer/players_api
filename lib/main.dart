@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:player/src/injector.dart';
 import 'package:player/src/presentation/bloc/player/player_bloc.dart';
 import 'package:player/src/presentation/bloc/player_detail/player_detail_bloc.dart';
-import 'package:player/src/presentation/view/player/player_screen.dart';
+import 'package:player/src/router/app_routes.dart';
 
 void main() {
   setup();
@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => injector<PlayerDetailsBloc>(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: router,
         title: 'Player',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: PlayerScreen() ,
       ),
     );
   }

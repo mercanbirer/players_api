@@ -6,7 +6,6 @@ import 'package:player/src/presentation/view/player_detail/player_details_screen
 import '../presentation/view/not_found_page.dart';
 
 final router = GoRouter(
-  debugLogDiagnostics: true,
   routes: <GoRoute>[
     GoRoute(
         name: 'playerScreen',
@@ -18,9 +17,18 @@ final router = GoRouter(
             name: 'playerDetailScreen',
             path: 'playerDetailScreen',
             builder: (BuildContext context, GoRouterState state) {
-              final params = state.extra! as Map<Player, Object>;
-              final player = params['player'] as Player;
-              return PlayerDetailsScreen(player: player);
+              final params = state.extra as Map<Player, Object>?;
+              if (params != null) {
+                final player = params['player'] as Player?;
+                if (player != null) {
+                  return PlayerDetailsScreen(player: player);
+                }
+              }
+              return const Scaffold(
+                body: Center(
+                  child: Text('Error'),
+                ),
+              );
             },
           ),
         ]),
