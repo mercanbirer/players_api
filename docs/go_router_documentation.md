@@ -8,7 +8,7 @@ go_router, Flutter uygulamalarında gezinme (routing) işlemlerini kolayca yöne
 
    ```
    dependencies:
-     go_router: ^7.1.1
+     go_router: [latest-version] 
    ```
 
 - Uygulamaya GoRouter yapılandırmasını ekliyoruz:
