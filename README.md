@@ -37,6 +37,9 @@ dependencies:
 ### RegisterFactory:
   We use this method to return a new instance of type T every time we call get<T>()
 
+### Go_Router
+  
+
 
   ![image](https://github.com/mercanbirer/players_api/assets/70891652/81d043a5-1753-4249-a6cc-53b726e9c8d2)
 
