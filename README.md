@@ -38,7 +38,7 @@ dependencies:
   We use this method to return a new instance of type T every time we call get<T>()
 
 ### Go_Router
-  
+  It is a package used to easily manage navigation operations in Flutter applications. document: docs -> go_router_documentation
 
 
   ![image](https://github.com/mercanbirer/players_api/assets/70891652/81d043a5-1753-4249-a6cc-53b726e9c8d2)
